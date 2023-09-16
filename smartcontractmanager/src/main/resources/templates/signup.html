@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="~{baseNavbar::Layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="@{title}"></title>
+</head>
+<body>
+  <section>
+	  
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				
+				<div class="my-card">
+					<h1 class="text-center">Register Here</h1>
+
+					<form th:action="@{/register}" method="post" th:object="${user}">
+						<!-- name field -->
+						<div class="form-group">
+						  <label for="name-field" class="form-label">Name</label>
+						  <input type="text"
+						  name="name" 
+						  th:value="${user.name}"
+						  id="name-field" 
+						  class="form-control"
+						  th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}">
+						</div>
+						<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">
+							
+						</div>
+						
+						<!-- email field -->
+						<div class="form-group">
+						  <label for="email-field" class="form-label">Email</label>
+						  <input type="email" 
+						  name="email" 
+						  th:value="${user.email}"
+						  id="email-field" 
+						  class="form-control"
+						  th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}">
+						</div>
+						
+						<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback">
+							
+						</div>
+						
+						<!-- password field -->
+						<div class="form-group">
+						  <label for="password-field" class="form-label">Password</label>
+						  <input type="password"
+						  name="password" 
+						  id="password-field" 
+						  class="form-control">
+						</div>
+						
+						<div class="form-group">
+							<textarea th:value="${user.about}" rows="6" class="form-control" placeholder="enter about yourself"></textarea>
+						</div>
+						
+						<div class="form-group form-check">
+							<input type="checkbox" name="agreement" class="form-check-input" id="agreement">
+							<label for="agreement">Accept Terms and Conditions</label>
+							
+						</div>
+						
+						<div class="container text-center">
+							<button type="submit" class="btn bg-primary text-white">
+								Submit
+							</button>
+							
+							<button type="reset" class="btn bg-warning">
+								Reset
+							</button>
+						</div>
+						
+						
+						
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+  </section>
+</body>
+</html>
