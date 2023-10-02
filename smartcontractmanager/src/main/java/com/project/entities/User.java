@@ -22,10 +22,10 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(name = "user_name", nullable = false)
+	@Column(name = "name", nullable = false)
 	@NotBlank(message = "empty field!")
 	private String name;
-	@Column(name = "user_email", nullable = false, unique = true)
+	@Column(name = "email", nullable = false)
 	@Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message = "enter valid email")
 	private String email;
 	@Column(nullable = false)

@@ -1,14 +1,19 @@
 package com.project.controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.dao.UserRepository;
 import com.project.entities.User;
 
 @Controller
 public class HomeController {
+	@Autowired
+	private UserRepository userRepository;
 	
 	//handler for displaying home page 
 	@GetMapping("/")
@@ -31,7 +36,8 @@ public class HomeController {
 		user.setEnabled(true);
 		System.out.println("Agreement " + agreement);
 		System.out.println("User " + user);
-		return "signup";
+		userRepository.save(user);
+		return "register";
 	}
 	
 	
