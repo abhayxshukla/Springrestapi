@@ -6,14 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.project.dao.UserRepository;
 import com.project.entities.User;
+import com.project.service.userService;
 
 @Controller
-public class HomeController {
+public class HomeController {	
 	@Autowired
-	private UserRepository userRepository;
+	private userService UserService;
 	
 	//handler for displaying home page 
 	@GetMapping("/")
@@ -36,7 +35,7 @@ public class HomeController {
 		user.setEnabled(true);
 		System.out.println("Agreement " + agreement);
 		System.out.println("User " + user);
-		userRepository.save(user);
+		UserService.registerUser(user);
 		return "register";
 	}
 	

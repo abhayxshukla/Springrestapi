@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.Email;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,9 +24,9 @@ public class User {
 	@Column(name = "name", nullable = false)
 	@NotBlank(message = "empty field!")
 	private String name;
-	@Column(name = "email", nullable = false)
-	@Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message = "enter valid email")
-	private String email;
+	@Column(name = "email")
+	@Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+	private String email = "default@example.com";
 	@Column(nullable = false)
 	private String password;
 	@Column(nullable = false)
