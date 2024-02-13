@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 import com.project.entities.User;
 import com.project.service.userService;
 
@@ -36,6 +38,7 @@ public class HomeController {
 		System.out.println("Agreement " + agreement);
 		System.out.println("User " + user);
 		UserService.registerUser(user);
+		
 		return "register";
 	}
 	

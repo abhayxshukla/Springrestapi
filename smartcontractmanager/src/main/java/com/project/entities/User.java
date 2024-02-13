@@ -24,9 +24,9 @@ public class User {
 	@Column(name = "name", nullable = false)
 	@NotBlank(message = "empty field!")
 	private String name;
-	@Column(name = "email")
+	@Column(name = "email", nullable = true)
 	@Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
-	private String email = "default@example.com";
+	private String email = "";
 	@Column(nullable = false)
 	private String password;
 	@Column(nullable = false)
